@@ -12,8 +12,10 @@ import { BsGlobe } from "react-icons/bs";
 import { Platform } from "../hooks/useGames";
 import { HStack, Icon } from "@chakra-ui/react";
 import { IconType } from "react-icons";
+// import { GameQuery } from "../App";
 
 interface PlatformIcon {
+  // gameQuery: GameQuery;
   platforms: Platform[];
 }
 
