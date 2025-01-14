@@ -1,15 +1,16 @@
 import useGenres from "../hooks/useGenres";
 import getCropedImage from "../services/imagUrl";
-import GeneListSkeleton from "./GeneListSkeleton";
-import { HStack, Image, List, ListItem, Text } from "@chakra-ui/react";
+import { HStack, Image, List, ListItem, Spinner, Text } from "@chakra-ui/react";
 
 const GenreList = () => {
-  const { data, isLoading } = useGenres();
-  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
+  const { data, isLoading, error } = useGenres();
+
+  if (error) return null;
+  if (isLoading) return <Spinner />;
 
   return (
     <List>
-      {isLoading && skeletons.map((skel) => <GeneListSkeleton key={skel} />)}
+      {/* {isLoading && skeletons.map((skel) => <GenreListSkeleton key={skel} />)} */}
       {data.map((genre) => (
         <ListItem key={genre.id} paddingY="5px">
           <HStack>
