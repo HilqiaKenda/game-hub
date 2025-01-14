@@ -8,20 +8,30 @@ import {
   Text,
 } from "@chakra-ui/react";
 import usePlatforms from "../hooks/usePlatform";
+import { Platform } from "../hooks/useGames";
 
-const PlatformSelector = () => {
+interface SelectedPlatformProp {
+  onSelect: (platform: Platform) => void;
+  selectedPlatform: Platform | null;
+}
+
+const PlatformSelector = ({
+  onSelect,
+  selectedPlatform,
+}: SelectedPlatformProp) => {
   const { data, error } = usePlatforms();
   if (error) return null;
   return (
     <Menu>
       <>
         <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-          Platforms
-          {/* {data.map(platform => platform.name ? <Text>{platform.name}</Text>: <Text>Platforms</Text>)} */}
+          {selectedPlatform?.name || "Platforms"}
         </MenuButton>
         <MenuList>
           {data.map((platform) => (
-            <MenuItem key={platform.id}>{platform.name}</MenuItem>
+            <MenuItem onClick={() => onSelect(platform)} key={platform.id}>
+              {platform.name}
+            </MenuItem>
           ))}
         </MenuList>
       </>
