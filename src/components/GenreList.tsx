@@ -3,6 +3,7 @@ import useGenres from "../hooks/useGenres";
 import getCropedImage from "../services/imagUrl";
 import {
   Button,
+  Heading,
   HStack,
   Image,
   List,
@@ -22,29 +23,37 @@ const GenreList = ({ selectedGenre, onSelected }: SelectedGenreProp) => {
   if (isLoading) return <Spinner />;
 
   return (
-    <List>
-      {/* {isLoading && skeletons.map((skel) => <GenreListSkeleton key={skel} />)} */}
-      {data.map((genre) => (
-        <ListItem key={genre.id} paddingY="5px">
-          <HStack>
-            <Image
-              height="40px"
-              borderRadius={3}
-              overflow="hidden"
-              src={getCropedImage(genre.image_background)}
-            />
-            <Button
-              variant="link"
-              fontSize="lg"
-              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
-              onClick={() => onSelected(genre)}
-            >
-              {genre.name}
-            </Button>
-          </HStack>
-        </ListItem>
-      ))}
-    </List>
+    <>
+      <Heading fontSize="3xl" marginBottom={3}>
+        Genres
+      </Heading>
+      <List>
+        {/* {isLoading && skeletons.map((skel) => <GenreListSkeleton key={skel} />)} */}
+        {data.map((genre) => (
+          <ListItem key={genre.id} paddingY="5px">
+            <HStack>
+              <Image
+                objectFit="cover"
+                height="40px"
+                borderRadius={3}
+                overflow="hidden"
+                src={getCropedImage(genre.image_background)}
+              />
+              <Button
+                whiteSpace="normal"
+                textAlign="left"
+                variant="link"
+                fontSize="lg"
+                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                onClick={() => onSelected(genre)}
+              >
+                {genre.name}
+              </Button>
+            </HStack>
+          </ListItem>
+        ))}
+      </List>
+    </>
   );
 };
 
