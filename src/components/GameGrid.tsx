@@ -14,28 +14,27 @@ const GameGrid = ({ gameQuery }: selectGenreProps) => {
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
+  if (error) return <Text>{error}</Text>;
+
   return (
-    <>
-      {error && <Text>{error}</Text>}
-      <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-        padding="10px"
-        spacing={5}
-      >
-        {" "}
-        {isLoading &&
-          skeletons.map((skeleton) => (
-            <GameContainer key={skeleton}>
-              <GameCardskeleton />
-            </GameContainer>
-          ))}
-        {data.map((game) => (
-          <GameContainer key={game.id}>
-            <GameCard game={game} />
+    <SimpleGrid
+      columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+      padding="10px"
+      spacing={5}
+    >
+      {" "}
+      {isLoading &&
+        skeletons.map((skeleton) => (
+          <GameContainer key={skeleton}>
+            <GameCardskeleton />
           </GameContainer>
         ))}
-      </SimpleGrid>
-    </>
+      {data.map((game) => (
+        <GameContainer key={game.id}>
+          <GameCard game={game} />
+        </GameContainer>
+      ))}
+    </SimpleGrid>
   );
 };
 
