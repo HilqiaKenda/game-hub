@@ -1,5 +1,7 @@
+import { useQuery } from "@tanstack/react-query";
 import { GameQuery } from "../App";
 import useData from "./useData";
+import axios from "axios";
 
 export interface Platform {
   id: number;
@@ -16,6 +18,10 @@ export interface Game {
 }
 
 const useGames = (gameQuery: GameQuery) =>
+  // useQuery({
+  //   queryKey: ["games"],
+  //   queryFn: () => axios,
+  // });
   useData<Game>(
     "/games",
     {
