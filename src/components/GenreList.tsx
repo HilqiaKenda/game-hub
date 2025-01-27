@@ -1,5 +1,4 @@
-import { Genre } from "../hooks/useData";
-import useGenres from "../hooks/useGenres";
+import useGenres, { Genre } from "../hooks/useGenres";
 import getCropedImage from "../services/imagUrl";
 import {
   Button,
@@ -29,7 +28,7 @@ const GenreList = ({ selectedGenre, onSelected }: SelectedGenreProp) => {
       </Heading>
       <List>
         {/* {isLoading && skeletons.map((skel) => <GenreListSkeleton key={skel} />)} */}
-        {data.map((genre) => (
+        {data?.results.map((genre) => (
           <ListItem key={genre.id} paddingY="5px">
             <HStack>
               <Image

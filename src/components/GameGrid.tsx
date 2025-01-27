@@ -14,7 +14,7 @@ const GameGrid = ({ gameQuery }: selectGenreProps) => {
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
-  if (error) return <Text>{error}</Text>;
+  if (error) return <Text>{error.message}</Text>;
 
   return (
     <SimpleGrid
@@ -29,7 +29,7 @@ const GameGrid = ({ gameQuery }: selectGenreProps) => {
             <GameCardskeleton />
           </GameContainer>
         ))}
-      {data.map((game) => (
+      {data?.results.map((game) => (
         <GameContainer key={game.id}>
           <GameCard game={game} />
         </GameContainer>
