@@ -10,12 +10,16 @@ interface SelectedPlatformProp {
 
 const PlatformSelector = ({ onSelect, gameQuery }: SelectedPlatformProp) => {
   const { data, error } = usePlatforms();
+  const platforms = data?.results.find(
+    (platform) => platform.id === gameQuery.platformId
+  );
+
   if (error) return null;
   return (
     <Menu>
       <>
         <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-          {gameQuery.platform?.name || "Platforms"}
+          {platforms?.name || "Platforms"}
         </MenuButton>
         <MenuList>
           {data?.results.map((platform) => (

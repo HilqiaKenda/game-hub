@@ -5,6 +5,7 @@ import genre from "../data/genre";
 const apiClient = new APIClient<Genre>("/genres");
 export interface Genre {
   id: number;
+  image_background: string;
   name: string;
 }
 
