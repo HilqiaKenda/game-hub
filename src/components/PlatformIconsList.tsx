@@ -14,7 +14,6 @@ import { IconType } from "react-icons";
 import { Platform } from "../hooks/usePlatform";
 
 interface PlatformIcon {
-  // gameQuery: GameQuery;
   platforms: Platform[];
 }
 
