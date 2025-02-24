@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import getCropedImage from "../services/imagUrl";
-import useGameQueryStore from "../srores/GameQueryStore";
+import useGameQueryStore from "../stores/GameQueryStore";
 
 const GenreList = () => {
   const { data, isLoading, error } = useGenres();
