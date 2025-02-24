@@ -8,11 +8,12 @@ interface ContainerProp {
 const GameContainer = ({ children }: ContainerProp) => {
   return (
     <Box
+      _hover={{
+        transform: "scale(5}",
+        transition: "transform .15s ease-in",
+      }}
       borderRadius={10}
       overflow="hidden"
-      _hover={{
-        transform: "scale(1.03}",
-      }}
     >
       {children}
     </Box>

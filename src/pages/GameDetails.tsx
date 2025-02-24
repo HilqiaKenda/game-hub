@@ -12,7 +12,7 @@ const GameDetails = () => {
   return (
     <>
       <Heading>{game.name}</Heading>
-      <Text>{game.slug}</Text>
+      <Text>{game.description_raw}</Text>
     </>
   );
 };
