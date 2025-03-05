@@ -13,21 +13,21 @@ interface CardProps {
 const GameCard = ({ game }: CardProps) => {
   return (
     <Card>
-      <Image src={getCropedImage(game.background_image)} />
-      <CardBody>
-        <HStack justifyContent={"space-between"} marginBottom={3}>
-          <PlatformIconsList
-            platforms={game.parent_platforms.map(
-              (platform) => platform.platform
-            )}
-          />
-          <CriticScore score={game.metacritic} />
-        </HStack>
-        <Heading fontSize="2xl">
-          <Link to={"/games/" + game.slug}>{game.name}</Link>
-        </Heading>
-        <Emoji rating={game.rating_top} />
-      </CardBody>
+      <Link to={"/games/" + game.slug}>
+        <Image src={getCropedImage(game.background_image)} />
+        <CardBody>
+          <HStack justifyContent={"space-between"} marginBottom={3}>
+            <PlatformIconsList
+              platforms={game.parent_platforms.map(
+                (platform) => platform.platform
+              )}
+            />
+            <CriticScore score={game.metacritic} />
+          </HStack>
+          <Heading fontSize="2xl">{game.name}</Heading>
+          <Emoji rating={game.rating_top} />
+        </CardBody>
+      </Link>
     </Card>
   );
 };
