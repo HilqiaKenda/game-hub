@@ -12,7 +12,7 @@ const GameTrailer = ({ gameId }: Props) => {
 
   if (error) throw error;
 
-  const video = data?.results[gameId];
+  const video = data?.results[0];
   if (!video) return null;
 
   return video ? (
